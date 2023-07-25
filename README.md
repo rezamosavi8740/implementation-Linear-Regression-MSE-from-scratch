@@ -1,47 +1,51 @@
-Linear Regression in Python
-This Python class implements a simple linear regression model using gradient descent for learning. The linear regression model aims to find a relationship between one or more features(independent variables) and a continuous target variable(dependent variable).
+## Linear Regression Model
 
-Class: LinearRegression
-Methods:
-__init__(self, learning_rate, iterations)
+This repository contains a Python implementation of a simple Linear Regression model. Linear Regression is a supervised machine learning algorithm used for predicting numeric values based on a linear relationship between the input features and the target variable.
 
-The constructor method of the class. It initializes the model with specified learning rate and number of iterations to perform gradient descent.
+### Usage
 
-fit(self, X, Y)
+The `LinearRegression` class in this code allows you to create and train a Linear Regression model with customizable learning rate and iterations. Here's how to use the code:
 
-This method trains the model using the input data X and target values Y. It initializes the weights and bias to zero, and then updates these parameters using gradient descent.
+```python
+# Import the necessary libraries
+import numpy as np
 
-update_weights(self)
+# Create a Linear Regression object
+model = LinearRegression(learning_rate=0.01, iterations=1000)
 
-This is a helper method for the fit method. It computes the gradient of the loss with respect to the weights and bias, and then updates these parameters in the direction of the negative gradient. The size of the step taken in the negative gradient direction is determined by the learning rate.
+# Prepare your training data - X and Y are NumPy arrays with input features and target values
+X = ...
+Y = ...
 
-predict(self, X)
+# Train the model on the data
+model.fit(X, Y)
 
-Once the model is trained, this method makes predictions on new data X. It computes the dot product of X with the weights and adds the bias.
+# Make predictions on new data
+new_data = ...
+predictions = model.predict(new_data)
+```
 
-Attributes:
-learning_rate
+### Constructor
 
-The learning rate for gradient descent.
+The `LinearRegression` class constructor takes two parameters:
 
-iterations
+- `learning_rate`: The learning rate used in gradient descent for updating the model's weights during training.
+- `iterations`: The number of iterations the model will run gradient descent during the training process.
 
-The number of iterations for which to run gradient descent.
+### Methods
 
-m, n
+1. `fit(X, Y)`: This method is used to train the Linear Regression model with the given training data `X` and target values `Y`.
 
-The dimensions of the input data X.
+2. `predict(X)`: This method takes input data `X` and returns the predictions based on the trained model.
 
-W
+### How it works
 
-The weights of the linear regression model. After training, these weights represent the coefficients of the features in the target function.
+The implementation uses a gradient descent algorithm to optimize the model's parameters (`W` and `b`) for the best fit to the training data. The training process iteratively updates the model's weights using the gradients of the mean squared error loss with respect to `W` and `b`.
 
-b
+Remember to install the necessary libraries before using the code. You can do this by running:
 
-The bias of the linear regression model. After training, this bias represents the intercept of the target function.
+```
+pip install numpy
+```
 
-X, Y
-
-The training data and target values that the model was trained on.
-
-The code is written in Python and uses NumPy for operations on arrays. It is a simple, yet powerful, implementation of one of the foundational models in machine learning.
+Feel free to customize the learning rate and the number of iterations according to your specific dataset and requirements. Happy coding!
